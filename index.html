@@ -11,6 +11,8 @@
 <meta property="og:image" content="img/ex/concert.webp">
 <link rel="icon" type="image/svg+xml" href="img/tapakila-icon.svg">
 <link rel="stylesheet" href="css/site.css">
+<script src="js/config.js"></script>
+<script>try{var t=localStorage.getItem("tpk_site_theme")||(window.TAPAKILA_SITE&&TAPAKILA_SITE.defaultTheme)||"blue";if(t==="red")document.documentElement.dataset.theme="red"}catch(e){}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Magicien d'Izna — Tapakila","description":"Billets d'évènement personnalisés avec QR code anti-fraude","telephone":["+261388795783","+261329767166"],"email":"arogerald@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Lot Z2 103 Ankiakandrefana","addressLocality":"Maroantsetra","postalCode":"512","addressCountry":"MG"}}</script>
 </head>
 <body>
@@ -21,6 +23,7 @@
   <nav id="menu" aria-label="Navigation">
     <a href="#offre">Notre offre</a><a href="#securite">Sécurité</a><a href="#exemples">Exemples</a><a href="#process">Comment ça marche</a><a href="#faq">Questions</a>
   </nav>
+  <button class="theme-t" id="themeT" aria-label="Changer de thème" title="Bleu nuit / Rouge nuit"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button>
   <a class="btn sm" href="#contact">Devis gratuit</a>
   <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </header>
@@ -168,7 +171,6 @@
 
 <a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 2.2 17.7L1 23l5.4-1.4A11.8 11.8 0 0 0 12 23.2 11.8 11.8 0 0 0 20.5 3.5zM12 21.2a9.7 9.7 0 0 1-5-1.4l-.4-.2-3.2.8.9-3.1-.2-.4a9.7 9.7 0 1 1 7.9 4.3zm5.3-7.3c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.1-.8.9-.9 1.1-.3.2-.6.1a7.9 7.9 0 0 1-3.9-3.4c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.8 3.8 0 0 0-1.2 2.8 6.6 6.6 0 0 0 1.4 3.5 15 15 0 0 0 5.8 5.1c2.1.9 2.9.9 3.9.8a3.3 3.3 0 0 0 2.2-1.6 2.7 2.7 0 0 0 .2-1.6c-.1-.1-.3-.2-.6-.3z"/></svg></a>
 
-<script src="js/config.js"></script>
 <script src="js/site.js"></script>
 </body>
 </html>

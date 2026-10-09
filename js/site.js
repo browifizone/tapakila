@@ -9,6 +9,13 @@
   $('#dMail').href = 'mailto:' + C.email; $('#dEm').textContent = C.email;
   $('#yr').textContent = new Date().getFullYear();
 
+  /* thème : bleu nuit / rouge nuit (mémorisé) */
+  const root = document.documentElement;
+  $('#themeT').addEventListener('click', () => {
+    const red = root.dataset.theme !== 'red'; root.dataset.theme = red ? 'red' : '';
+    try { localStorage.setItem('tpk_site_theme', red ? 'red' : 'blue'); } catch (e) { /* ignoré */ }
+  });
+
   /* menu mobile */
   const burger = $('#burger'), menu = $('#menu');
   burger.addEventListener('click', () => { const o = menu.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
