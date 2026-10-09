@@ -15,7 +15,7 @@
   function svg(w, h) {
     const [c1, c2] = theme(), vert = h > w * 1.15, stub = vert ? Math.min(34, h * 0.22) : Math.min(28, w * 0.22);
     const mw = vert ? w : w - stub, mh = vert ? h - stub : h, title = (($('[name=evenement]') || {}).value || '').trim() || 'Votre évènement', date = (($('[name=date]') || {}).value || '').trim() || 'Date · Lieu';
-    const t = title.length > 26 ? title.slice(0, 25) + '…' : title, fs = Math.max(2.2, Math.min((mw - pad * 3) / (t.length * 0.62), mh * 0.2)), pad = Math.min(mw, mh) * 0.1;
+    const pad = Math.min(mw, mh) * 0.1, t = title.length > 26 ? title.slice(0, 25) + '…' : title, fs = Math.max(2.2, Math.min((mw - pad * 3) / (t.length * 0.62), mh * 0.2));
     const q = Math.min(stub, vert ? w : h) * 0.5, qx = vert ? (w - q) / 2 : w - stub + (stub - q) / 2, qy = vert ? h - stub + (stub - q) / 2 : (h - q) / 2, cell = q / 7;
     let qr = ''; QR.forEach((r, y) => r.forEach((on, x) => { if (on) qr += `<rect x="${(qx + x * cell).toFixed(2)}" y="${(qy + y * cell).toFixed(2)}" width="${(cell + .05).toFixed(2)}" height="${(cell + .05).toFixed(2)}"/>`; }));
     const cut = vert ? `<line x1="0" y1="${h - stub}" x2="${w}" y2="${h - stub}"/>` : `<line x1="${w - stub}" y1="0" x2="${w - stub}" y2="${h}"/>`;
