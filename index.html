@@ -21,7 +21,7 @@
 <header class="nav" id="top">
   <a class="brand" href="#top" aria-label="Tapakila"><img src="img/tapakila-lockup-dark.svg" alt="Tapakila" height="30"></a>
   <nav id="menu" aria-label="Navigation">
-    <a href="#offre">Notre offre</a><a href="#securite">Sécurité</a><a href="#exemples">Exemples</a><a href="#process">Comment ça marche</a><a href="#faq">Questions</a>
+    <a href="#evenements" id="mEv" hidden>Évènements</a><a href="#actus" id="mNews" hidden>Actualités</a><a href="#offre">Notre offre</a><a href="#securite">Sécurité</a><a href="#exemples">Exemples</a><a href="#process">Comment ça marche</a><a href="#faq">Questions</a><a href="#pub">Faire connaître votre évènement</a>
   </nav>
   <button class="theme-t" id="themeT" aria-label="Changer de thème" title="Bleu nuit / Rouge nuit"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button>
   <a class="btn sm" href="#contact">Devis gratuit</a>
@@ -52,6 +52,20 @@
 <span>Concerts</span><span>Galas</span><span>Tournois sportifs</span><span>Kermesses</span><span>Soirées</span><span>Festivals</span><span>Conférences</span><span>Spectacles</span><span>Fêtes scolaires</span><span>Cérémonies</span></div></div>
 
 <!-- ============ OFFRE ============ -->
+<!-- ============ VITRINE : évènements & actualités (alimentés par data/vitrine.json) ============ -->
+<div class="wrap" id="banWrap" hidden><a class="ban" id="ban" href="#" target="_blank" rel="noopener sponsored"><img id="banImg" alt=""><span class="tag">Publicité</span></a></div>
+<section class="wrap sec" id="evenements" hidden>
+  <div class="sec-h reveal"><span class="eyebrow">Agenda</span><h2>Évènements <em>à venir</em></h2><p>Réservez votre place directement auprès de l'organisateur.</p></div>
+  <div class="ev-feat" id="evFeat"></div>
+  <div class="chips" id="evCats"></div>
+  <div class="ev-grid" id="evGrid"></div>
+</section>
+<section class="wrap sec" id="actus" hidden>
+  <div class="sec-h reveal"><span class="eyebrow">Actualités</span><h2>Les <em>dernières nouvelles</em></h2></div>
+  <div class="news-grid" id="newsGrid"></div>
+</section>
+<div class="modal" id="evModal" hidden><div class="modal-b" role="dialog" aria-modal="true"><button class="modal-x" id="evX" aria-label="Fermer">×</button><div id="evBody"></div></div></div>
+
 <section class="wrap sec" id="offre">
   <div class="sec-h reveal"><span class="eyebrow">Ce que nous proposons</span><h2>Un billet qui fait <em>sérieux</em>, du premier au dernier exemplaire</h2><p>Vous nous dites ce que vous voulez, nous nous occupons de tout : création, numérotation, mise en page, impression.</p></div>
   <div class="grid3">
@@ -120,6 +134,13 @@
 </section>
 
 <!-- ============ CONTACT ============ -->
+<!-- ============ PUBLICITÉ ============ -->
+<section class="wrap sec" id="pub">
+  <div class="sec-h reveal"><span class="eyebrow">Pour les organisateurs</span><h2>Faites connaître <em>votre évènement</em></h2><p>Votre évènement affiché sur ce site, devant les visiteurs qui cherchent une sortie. Choisissez une formule, nous nous occupons du reste.</p></div>
+  <div class="grid3" id="pubGrid"></div>
+  <div class="cta" style="margin-top:28px"><a class="btn" id="pubWa" href="#" target="_blank" rel="noopener">Réserver une publicité sur WhatsApp</a></div>
+</section>
+
 <section class="wrap sec" id="contact">
   <div class="contact reveal">
     <div class="ct-l">
@@ -172,5 +193,6 @@
 <a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 2.2 17.7L1 23l5.4-1.4A11.8 11.8 0 0 0 12 23.2 11.8 11.8 0 0 0 20.5 3.5zM12 21.2a9.7 9.7 0 0 1-5-1.4l-.4-.2-3.2.8.9-3.1-.2-.4a9.7 9.7 0 1 1 7.9 4.3zm5.3-7.3c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.1-.8.9-.9 1.1-.3.2-.6.1a7.9 7.9 0 0 1-3.9-3.4c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.8 3.8 0 0 0-1.2 2.8 6.6 6.6 0 0 0 1.4 3.5 15 15 0 0 0 5.8 5.1c2.1.9 2.9.9 3.9.8a3.3 3.3 0 0 0 2.2-1.6 2.7 2.7 0 0 0 .2-1.6c-.1-.1-.3-.2-.6-.3z"/></svg></a>
 
 <script src="js/site.js"></script>
+<script src="js/vitrine.js"></script>
 </body>
 </html>
