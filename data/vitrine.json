@@ -1,1 +1,44 @@
-{"generated":"","currency":"Ar","events":[],"news":[],"banners":[],"packages":[]}
+{
+ "generated": "2026-10-09T07:17:03.926Z",
+ "currency": "Ar",
+ "pay": {
+  "mvola": "",
+  "orange": "",
+  "airtel": "",
+  "holder": "",
+  "note": ""
+ },
+ "events": [],
+ "news": [],
+ "banners": [],
+ "packages": [
+  {
+   "name": "À la une — 7 jours",
+   "kind": "une",
+   "days": 7,
+   "price": 50000,
+   "description": "Votre évènement en tête de page, avec la mention « À la une »."
+  },
+  {
+   "name": "À la une — 14 jours",
+   "kind": "une",
+   "days": 14,
+   "price": 90000,
+   "description": "Mise en avant pendant deux semaines."
+  },
+  {
+   "name": "Bannière — 14 jours",
+   "kind": "banniere",
+   "days": 14,
+   "price": 30000,
+   "description": "Votre visuel dans la bannière du site, avec lien vers votre page ou WhatsApp."
+  },
+  {
+   "name": "Article sponsorisé",
+   "kind": "actu",
+   "days": 30,
+   "price": 40000,
+   "description": "Un article dans les actualités, repéré « Sponsorisé », conservé 30 jours."
+  }
+ ]
+}
