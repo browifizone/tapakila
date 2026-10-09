@@ -164,6 +164,8 @@
       <label>Date prévue<input name="date" placeholder="Ex. 15 novembre 2026"></label></div>
       <div class="two"><label>Nombre de billets<input name="quantite" inputmode="numeric" placeholder="Ex. 500"></label>
       <label>Dimension<select name="taille" id="fSize"><option value="">À conseiller</option><option>Standard 150 × 60 mm</option><option>Compact 120 × 55 mm</option><option>Carte 85 × 54 mm</option><option>Vertical 70 × 140 mm</option><option>Autre (précisez ci-dessous)</option></select></label></div>
+      <div class="two" id="fCustom" hidden><label>Largeur (mm)<input name="largeur" inputmode="numeric" placeholder="Ex. 200"></label><label>Hauteur (mm)<input name="hauteur" inputmode="numeric" placeholder="Ex. 80"></label></div>
+      <figure class="prev" id="prev" aria-live="polite"><div class="prev-box" id="prevBox"></div><figcaption id="prevCap"></figcaption></figure>
       <fieldset><legend>Options souhaitées</legend>
         <label class="chk"><input type="checkbox" name="opt" value="Verso personnalisé"> Verso</label>
         <label class="chk"><input type="checkbox" name="opt" value="Plusieurs catégories (VIP, Standard…)"> Catégories VIP / Standard</label>
@@ -194,5 +196,6 @@
 
 <script src="js/site.js"></script>
 <script src="js/vitrine.js"></script>
+<script src="js/apercu.js"></script>
 </body>
 </html>

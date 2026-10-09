@@ -122,6 +122,6 @@
   }
   drawPub();
   fetch(jsonUrl, { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : Promise.reject())).then((d) => {
-    data = Object.assign(data, d); drawEvents(); drawNews(); drawBanner(); drawPub();
+    data = Object.assign(data, d); document.dispatchEvent(new CustomEvent('tpk:data', { detail: d })); drawEvents(); drawNews(); drawBanner(); drawPub();
   }).catch(() => { /* pas de données : les sections restent masquées */ });
 })();

@@ -138,3 +138,6 @@ fieldset{border:1px solid var(--line);border-radius:14px;padding:12px 14px;displ
 .tkl{display:grid;gap:10px;margin:14px 0}.tkr{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04)}.tkr input{width:84px}
 .soldout{font-weight:800;color:#ff9aa8}.tot{margin:6px 0 14px;font-size:18px}.okb{margin-top:16px;padding:16px;border-radius:16px;border:1px solid rgba(var(--ac-rgb),.45);background:rgba(var(--ac-rgb),.08)}.okb h4{margin:0 0 8px;font-size:20px}.payl{padding-left:18px;margin:8px 0}
 .modal-b select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--txt);font:inherit}
+
+.prev{margin:4px 0 0;padding:14px;border-radius:16px;border:1px dashed var(--line);background:rgba(255,255,255,.03);text-align:center}.prev[hidden]{display:none!important}
+.prev-box svg{display:block;margin:0 auto;width:100%;max-width:420px;max-height:260px;filter:drop-shadow(0 14px 26px rgba(0,0,0,.45))}.prev figcaption{margin-top:10px;font-size:14px;color:var(--mut)}

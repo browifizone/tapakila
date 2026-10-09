@@ -37,3 +37,7 @@ La réservation d'un évènement ouvre WhatsApp avec un message prérempli (num�
 - Dans le logiciel : *Vitrine & pubs* → évènement en mode « Vente de billets en ligne » → bouton **Billets** (types, prix, quantité, date limite) ; **Réservations** → numéros de paiement MVola / Orange Money / Airtel Money et file de validation.
 - **Sans hébergement** (site statique seul) : le client choisit ses billets, un message WhatsApp prérempli part vers l'organisateur ; dans le logiciel, *Réservations → Saisir / coller un message* lit ce message. Le stock affiché est celui du dernier paquet publié.
 - **Avec le logiciel en ligne** : renseignez `vitrineUrl` dans `js/config.js` (ex. `https://mon-serveur/public`). Le client commande directement, voit les numéros de paiement et la référence, saisit sa référence de transaction ; vous validez dans le logiciel. Le stock est en direct, les places sont bloquées 24 h.
+
+## Aperçu du billet (formulaire de devis)
+
+Choisir un format dans « Dimension » affiche un billet à l'échelle (avec le nom et la date saisis), son format en mm et le nombre de billets par feuille A4. Les formats viennent de *Tarifs & formats* du logiciel : ils sont inclus dans le paquet du site (`formats` dans `data/vitrine.json`). Sans paquet, la liste par défaut du site est utilisée. « Autre » demande largeur et hauteur.

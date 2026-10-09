@@ -57,7 +57,7 @@
     if (d.evenement) L.push(`Évènement : ${d.evenement.trim()}`);
     if (d.date) L.push(`Date : ${d.date.trim()}`);
     if (d.quantite) L.push(`Quantité : ${d.quantite.trim()}`);
-    if (d.taille) L.push(`Dimension : ${d.taille}`);
+    if (d.taille) L.push(`Dimension : ${d.taille}${/^Autre/.test(d.taille) && d.largeur && d.hauteur ? ` — ${d.largeur.trim()} × ${d.hauteur.trim()} mm` : ''}`);
     if (d.opts.length) L.push(`Options : ${d.opts.join(', ')}`);
     if (d.message) L.push(`Message : ${d.message.trim()}`);
     return L.join('\n');
