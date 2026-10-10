@@ -22,6 +22,28 @@ Le formulaire ouvre WhatsApp (ou le mail) avec un message structuré « Clé : v
 Dans le logiciel Tapakila : **Demandes > Nouvelle demande > coller le message** → les champs se remplissent seuls
 → **Convertir en client** → **Créer la commande**.
 
+## Mode d'emploi — mode « paquet » (recommandé pour débuter)
+
+Ici le site ne communique jamais avec votre PC : il est statique, et votre logiciel reste fermé à internet.
+`vitrineUrl` dans `js/config.js` doit rester **vide**.
+
+**Publier ou mettre à jour les évènements**
+1. Logiciel Tapakila → *Vitrine & pubs* → vérifiez que les évènements sont « publiés » → *Publier sur le site* → **Télécharger le paquet du site**.
+2. Dézippez, puis remplacez le dossier `data` du site par celui du paquet.
+3. Mettez en ligne : `git add . && git commit -m "Mise à jour" && git push` (Vercel republie tout seul en une minute).
+4. Ouvrez le site et vérifiez qu'un évènement s'affiche avec ses billets.
+
+**Recevoir une commande de billets**
+1. Le client choisit ses billets sur le site → WhatsApp s'ouvre avec le message prêt → il l'envoie.
+2. Dans le logiciel : *Vitrine & pubs* → *Réservations* → **Saisir / coller un message** → collez le message : l'évènement, le nom, le téléphone et les billets se remplissent seuls.
+3. Le client paie par mobile money (numéros affichés sur le site). Vous vérifiez la réception, puis **Valider** : les billets numériques (QR) sont créés.
+4. Envoyez-lui son lien « Mon billet » (bouton de la réservation validée) par WhatsApp. **Contrôlez que la référence de transaction n'a pas déjà servi pour une autre commande.**
+
+**À retenir**
+- Le stock affiché sur le site est celui du **dernier paquet publié** : republiez après chaque vente importante, ou avant une grosse affluence.
+- Ne partagez jamais l'adresse du logiciel (`http://…:5757`) sur internet ; elle ne sert qu'au PC et au Wi-Fi de l'évènement.
+- Pour que l'aperçu d'un lien partagé (WhatsApp, Facebook) affiche une image, remplacez dans `index.html` la ligne `og:image` par l'adresse complète de votre site, par exemple `https://votre-site.vercel.app/img/ex/concert.webp`.
+
 ## Évènements, actualités et publicités (vitrine)
 
 Le site affiche le contenu de `data/vitrine.json` (images dans `data/img/`). Les sections « Évènements », « Actualités » et la bannière n'apparaissent que s'il y a du contenu publié.

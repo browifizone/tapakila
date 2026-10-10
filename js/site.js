@@ -28,7 +28,7 @@
   } else $$('.reveal').forEach((el) => el.classList.add('in'));
 
   /* « Je veux ce style » -> préremplit le type d'évènement */
-  $$('.pick').forEach((b) => b.addEventListener('click', () => {
+  $$('figure .pick').forEach((b) => b.addEventListener('click', () => {
     const t = b.closest('figure').dataset.t, sel = $('#fType');
     if ([...sel.options].some((o) => o.text === t)) sel.value = t;
     $('#contact').scrollIntoView({ behavior: 'smooth' }); setTimeout(() => $('#form [name=nom]').focus({ preventScroll: true }), 700);

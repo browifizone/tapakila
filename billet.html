@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="referrer" content="no-referrer">
+<title>Mon billet · Tapakila</title>
+<style>
+:root{--bg:#07142b;--ink:#0b1b36;--mut:#8ea3c4;--acc:#ff9c2a;--ok:#22c55e;--bad:#ef4444}
+*{box-sizing:border-box}body{margin:0;font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:radial-gradient(1200px 600px at 50% -10%,#143a7a 0%,var(--bg) 60%) fixed;color:#fff;min-height:100vh}
+.w{max-width:480px;margin:0 auto;padding:18px 16px 40px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;letter-spacing:.3px;opacity:.9;margin-bottom:14px}.brand i{width:10px;height:10px;border-radius:3px;background:var(--acc);display:inline-block}
+h1{font-size:22px;margin:0 0 4px}.sub{color:var(--mut);margin:0 0 16px;font-size:14px}
+.tk{background:#fff;color:var(--ink);border-radius:18px;margin:0 0 16px;overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.4);position:relative;page-break-inside:avoid}
+.tk .top{padding:16px 18px 10px;background:linear-gradient(135deg,#1d4ed8,#0b2a66);color:#fff}
+.tk .cat{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.8px;background:var(--acc);color:#1a1100;border-radius:99px;padding:2px 10px;margin-bottom:6px}
+.tk .ti{font-size:19px;font-weight:700;line-height:1.2}.tk .meta{font-size:13.5px;opacity:.9;margin-top:4px}
+.tk .qr{padding:18px;text-align:center;border-top:2px dashed #cbd5e1;position:relative}
+.tk .qr:before,.tk .qr:after{content:"";position:absolute;top:-11px;width:20px;height:20px;border-radius:50%;background:var(--bg)}.tk .qr:before{left:-10px}.tk .qr:after{right:-10px}
+.tk img{width:min(100%,300px);height:auto;image-rendering:pixelated}
+.tk .sn{font:700 15px ui-monospace,Menlo,Consolas,monospace;letter-spacing:1px;margin-top:6px}.tk .nm{color:#51607a;font-size:13px}
+.tk.used img{opacity:.18}.tk .stamp{display:none;position:absolute;left:50%;top:62%;transform:translate(-50%,-50%) rotate(-12deg);border:4px solid var(--bad);color:var(--bad);font-weight:800;font-size:26px;padding:4px 14px;border-radius:10px;background:rgba(255,255,255,.85)}.tk.used .stamp{display:block}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 14px}.btns a,.btns button{flex:1;min-width:130px;text-align:center;padding:11px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font:600 14px inherit;cursor:pointer;text-decoration:none}
+.tip{font-size:13px;color:var(--mut);margin-top:6px}.msg{padding:18px;border-radius:14px;background:rgba(255,255,255,.08);text-align:center}.err{color:#fecaca}
+@media print{body{background:#fff;color:#000}.btns,.tip,.brand{display:none}.tk{box-shadow:none;border:1px solid #999}}
+</style></head><body><div class="w">
+<div class="brand"><i></i> Tapakila</div>
+<div id="root"><div class="msg">Chargement de votre billet…</div></div>
+</div>
+<script src="js/config.js" onerror="void 0"></script>
+<script>
+(function () {
+  const cfg = window.TAPAKILA_SITE || {}, API = cfg.vitrineUrl ? cfg.vitrineUrl.replace(/\/$/, '') : location.origin + '/public';
+  const root = document.getElementById('root'), t = new URLSearchParams(location.search).get('t') || '';
+  const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const qrOk = (u) => (/^data:image\/png;base64,[A-Za-z0-9+\/=]+$/.test(String(u || '')) ? u : '');   // le QR doit être une image intégrée, rien d'autre
+  const MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+  const fd = (d) => { const m = /^(\d{4})-(\d\d)-(\d\d)$/.exec(d || ''); return m ? `${+m[3]} ${MOIS[+m[2] - 1]} ${m[1]}` : ''; };
+  if (!/^[a-f0-9]{16,32}$/.test(t)) { root.innerHTML = '<div class="msg err">Lien de billet invalide. Utilisez le lien reçu après votre paiement.</div>'; return; }
+  fetch(API + '/ticket/' + t).then((r) => r.json().then((j) => { if (!r.ok) throw new Error(j.error || 'Billet introuvable'); return j; })).then((d) => {
+    const ev = d.event, when = [fd(ev.date) + (ev.dateEnd && ev.dateEnd !== ev.date ? ' → ' + fd(ev.dateEnd) : ''), ev.time].filter(Boolean).join(' · '), where = [ev.venue, ev.city].filter(Boolean).join(', ');
+    document.title = 'Mon billet · ' + ev.title;
+    if (d.status !== 'validee') { root.innerHTML = `<h1>${esc(ev.title)}</h1><div class="msg">${d.status === 'en_attente' ? 'Votre paiement est en cours de vérification. Revenez sur cette page dans quelques instants.' : 'Cette réservation n\'est plus active. Contactez l\'organisateur.'}<div class="tip">Référence : ${esc(d.ref)}</div></div>`; return; }
+    root.innerHTML = `<h1>${d.tickets.length > 1 ? 'Vos ' + d.tickets.length + ' billets' : 'Votre billet'}</h1><p class="sub">Présentez le QR code à l'entrée (écran à pleine luminosité). Un billet ne peut servir qu'une fois.</p>
+      <div class="btns"><button id="pr">Imprimer / PDF</button></div>` +
+      d.tickets.map((k, i) => `<div class="tk ${k.used ? 'used' : ''}"><div class="top">${k.cat ? `<span class="cat">${esc(k.cat)}</span>` : ''}<div class="ti">${esc(ev.title)}</div><div class="meta">${esc(when)}${where ? '<br>' + esc(where) : ''}</div></div>
+        <div class="qr"><img alt="QR code du billet ${esc(k.serial)}" src="${qrOk(k.qr)}"><div class="sn">${esc(k.serial)}</div><div class="nm">${esc(d.name)} · ${esc(d.ref)}</div><div class="stamp">DÉJÀ UTILISÉ</div></div></div>`).join('') +
+      `<div class="btns">${d.tickets.map((k) => `<a download="${esc(k.serial)}.png" href="${qrOk(k.qr)}">Enregistrer ${esc(k.serial)}</a>`).join('')}</div><div class="tip">Gardez ce lien : il redonne accès à vos billets. Ne le partagez qu'avec les personnes qui viennent avec vous.</div>`;
+    document.getElementById('pr').onclick = () => print();
+  }).catch((e) => { root.innerHTML = `<div class="msg err">${esc(e.message)}</div>`; });
+})();
+</script></body></html>
